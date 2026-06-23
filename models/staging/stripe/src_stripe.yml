@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: stripe
+    description: Raw payment data from Stripe.
+    database: DBT_LEARN_ILYA
+    schema: stripe
+    tables:
+      - name: payment
