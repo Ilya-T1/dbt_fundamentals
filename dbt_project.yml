@@ -13,6 +13,9 @@ snapshot-paths: ["snapshots"]
 
 models:
   jaffle_shop:
-    +materialized: table
-    staging:
+    staging:            
       +materialized: view
+    intermediate:       
+      +materialized: ephemeral
+    marts:           
+      +materialized: table
