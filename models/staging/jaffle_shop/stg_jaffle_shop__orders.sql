@@ -10,7 +10,14 @@ renamed as (
         id              as order_id,
         user_id         as customer_id,
         order_date,
-        status          as order_status
+        status          as order_status,
+
+        -- valid_order_date: null for returned/pending, order_date otherwise
+        -- this is the soft-filter sentinel used by all downstream models
+        case
+            when status not in ('returned', 'return_pending')
+            then order_date
+        end             as valid_order_date
 
     from source
 

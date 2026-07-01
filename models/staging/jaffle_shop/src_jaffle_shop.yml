@@ -4,7 +4,7 @@ sources:
   - name: jaffle_shop
     description: Raw jaffle shop data loaded from the app database.
     database: DBT_LEARN_ILYA
-    schema: jaffle_shop
+    schema: JAFFLE_SHOP_RAW
     tables:
       - name: customers
         description: One record per customer.

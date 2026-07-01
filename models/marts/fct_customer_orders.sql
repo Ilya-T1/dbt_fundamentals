@@ -18,7 +18,7 @@ final as (
     paid_orders.customer_id,
     paid_orders.order_date,
     paid_orders.order_status,
-    paid_orders.total_amount_paid,
+    paid_orders.order_value_dollars,
     paid_orders.payment_finalized_date,
     customers.first_name,
     customers.last_name,
@@ -43,7 +43,7 @@ final as (
     else 'return' end as nvsr,
 
     -- customer lifetime value
-    sum(paid_orders.total_amount_paid) over (
+    sum(paid_orders.order_value_dollars) over (
       partition by paid_orders.customer_id
       order by paid_orders.order_date, paid_orders.order_id
       ) as customer_lifetime_value,

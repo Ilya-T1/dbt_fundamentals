@@ -4,6 +4,6 @@ sources:
   - name: stripe
     description: Raw payment data from Stripe.
     database: DBT_LEARN_ILYA
-    schema: stripe
+    schema: JAFFLE_SHOP_RAW
     tables:
-      - name: payment
+      - name: payments
