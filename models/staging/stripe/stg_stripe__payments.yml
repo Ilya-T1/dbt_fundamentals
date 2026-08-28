@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: One record per payment made against an order, sourced from Stripe.
+    columns:
+      - name: payment_id
+        description: Primary key of the payment.
+        tests:
+          - unique
+          - not_null
+
+      - name: order_id
+        description: Foreign key to the order this payment was made against.
+        tests:
+          - not_null
+
+      - name: payment_method
+        description: Method used to make the payment.
+        tests:
+          - accepted_values:
+              values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
+
+      - name: status
+        description: Status of the payment.
+        tests:
+          - accepted_values:
+              values: ['success', 'fail']
+
+      - name: amount
+        description: Total amount of the payment in dollars, converted from the cents value stored in the source.
+
+      - name: created_date
+        description: Date and time the payment was created.
