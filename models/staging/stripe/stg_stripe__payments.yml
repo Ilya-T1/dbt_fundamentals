@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_payments
+  - name: stg_stripe__payment
     description: One record per payment made against an order, sourced from Stripe.
     columns:
       - name: payment_id
